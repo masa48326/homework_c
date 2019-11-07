@@ -13,7 +13,7 @@ tom.full_name()  # "Tom Ford" という値を返す
 #         self.family_name = family_name
 #
 #     def full_name(self):
-#         print(f'{self.first_name} {self.family_name}')
+#         return print(f'{self.first_name} {self.family_name}')
 #
 #
 # ken = Customer(first_name="Ken", family_name="Tanaka")
@@ -39,16 +39,16 @@ ieyasu.age # 73 という値を返す
 #         self.first_name = first_name
 #         self.family_name = family_name
 #         self.age = age
-
-
+#
+#
 # ken = Customer(first_name="Ken", family_name="Tanaka", age=15)
 # ken.age
 # print(ken.age)
-
+#
 # tom = Customer(first_name="Tom", family_name="Ford", age=57)
 # tom.age
 # print(tom.age)
-
+#
 # ieyasu = Customer(first_name="Ieyasu", family_name="Tokugawa", age=73)
 # ieyasu.age
 # print(ieyasu.age)
@@ -70,32 +70,60 @@ ieyasu = Customer(first_name="Ieyasu", family_name="Tokugawa", age=73)
 ieyasu.entry_fee() # 1200 という値を返す
 '''
 
+# class Customer:
+#     def __init__(self, first_name, family_name, age):
+#         self.first_name = first_name
+#         self.family_name = family_name
+#         self.age = age
 
+# def entry_fee(self):
+
+# if self.age < 20:
+#     return 1000
+
+# if self.age < 65:
+#     return 1500
+
+# return 1200
+
+
+# ken = Customer(first_name="Ken", family_name="Tanaka", age=15)
+# ken.entry_fee()  # 1000 という値を返す
+# print(ken.entry_fee())  # 1000 という値を返す確認用
+#
+# tom = Customer(first_name="Tom", family_name="Ford", age=57)
+# tom.entry_fee()  # 1500 という値を返す
+# print(tom.entry_fee())  # 1500 という値を返す確認用
+#
+# ieyasu = Customer(first_name="Ieyasu", family_name="Tokugawa", age=73)
+# ieyasu.entry_fee()  # 1200 という値を返す
+# print(ieyasu.entry_fee())  # 1200 という値を返す確認用
+
+'''
+C-4. 単一の顧客情報をCSV形式で取得できる
+ken = Customer(first_name="Ken", family_name="Tanaka", age=15)
+ken.info_csv()  # "Ken Tanaka,15,1000" という値を返す
+
+tom = Customer(first_name="Tom", family_name="Ford", age= 57)
+ken.info_csv()  # "Tom Ford,57,1500" という値を返す
+
+ieyasu = Customer(first_name="Ieyasu", family_name="Tokugawa", age=73)
+ieyasu.info_csv()  # "Ieyasu Tokugawa,73,1200" という値を返す
+'''
 class Customer:
     def __init__(self, first_name, family_name, age):
         self.first_name = first_name
         self.family_name = family_name
         self.age = age
+        self.full_name = f'{self.first_name} {self.family_name}'
 
     def entry_fee(self):
-
         if self.age < 20:
             return 1000
-
         if self.age < 65:
             return 1500
 
         return 1200
 
-
-ken = Customer(first_name="Ken", family_name="Tanaka", age=15)
-ken.entry_fee()  # 1000 という値を返す
-print(ken.entry_fee())  # 1000 という値を返す確認用
-
-tom = Customer(first_name="Tom", family_name="Ford", age=57)
-tom.entry_fee()  # 1500 という値を返す
-print(tom.entry_fee())  # 1500 という値を返す確認用
-
-ieyasu = Customer(first_name="Ieyasu", family_name="Tokugawa", age=73)
-ieyasu.entry_fee()  # 1200 という値を返す
-print(ieyasu.entry_fee())  # 1200 という値を返す確認用
+    def info_csv(self):
+        return self.full_name, self.age, self.entry_fee
